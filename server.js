@@ -1,5 +1,11 @@
 // We are going to use MVC to hold our views folder
 
+// Check if we are running on the production environment or not
+// We want to load the variable if we are in the development environment
+if(process.env.NODE_ENV !== 'production'){
+	require('dotenv').config()
+}
+
 const express = require('express')
 const app = express()
 const expressLayouts = require('express-ejs-layouts')
@@ -9,12 +15,13 @@ const bodyParser = require('body-parser')
 // route folder to hold the routes to differnt paths
 // indexRouter variable is going to be set to the router variable in index.js
 const indexRouter = require('./routes/index')
-/*
 const listRouter = require('./routes/lista')
+const adminRouter = require('./routes/admin.router')
+
+/*
 const profileRouter = require('./routes/perfil')
 const departmentRouter = require('./routes/departamento')
 const projectRouter = require('./routes/proyecto')*/
-
 
 
 app.set('view engine', 'ejs')
@@ -41,7 +48,33 @@ app.use('/', indexRouter)
 // /books
 // /books/new
 //app.use('/books', bookRouter)
+app.use('/lista', listRouter)
+app.use('/admin', adminRouter)
+
+// Databse
+// We are going to import mongoose to be able to integrate the application with mongodb
+const mongoose = require('mongoose')
+
+// Set connection to the database
+// We want the connection to be dynamic using URL
+const run = async () => {
+	await mongoose.connect(process.env.DATABASE_URL, {
+		useNewUrlParser: true,
+		useUnifiedTopology: true
+	})
+	await app.listen(process.env.PORT || 3000)
+}
+
+run()
+
+
+const db = mongoose.connection
+// if there's an error
+db.on('error', error => console.error(error))
+
+// Once we connect for the first time
+db.once('open', () => console.log('Connected to Mongoose'))
 
 
 
-app.listen(process.env.PORT || 3000)
+
