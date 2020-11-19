@@ -35,7 +35,9 @@ app.use(express.static('public'))
 
 // We are sending values thorugh a url encoded
 // This configuration needs to take place before the routes configuration
-app.use(bodyParser.urlencoded({limit: '10mb', extended: false }))
+//app.use(bodyParser.urlencoded({limit: '10mb', extended: false }))
+
+app.use(bodyParser.json())
 
 
 // Tell the app that we want to use 
