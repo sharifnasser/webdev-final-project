@@ -59,15 +59,11 @@ const mongoose = require('mongoose')
 
 // Set connection to the database
 // We want the connection to be dynamic using URL
-const run = async () => {
-	await mongoose.connect(process.env.DATABASE_URL, {
-		useNewUrlParser: true,
-		useUnifiedTopology: true
-	})
-	await app.listen(process.env.PORT || 3000)
-}
 
-run()
+mongoose.connect(process.env.DATABASE_URL, {
+	useNewUrlParser: true,
+	useUnifiedTopology: true
+})
 
 
 const db = mongoose.connection
@@ -78,5 +74,4 @@ db.on('error', error => console.error(error))
 db.once('open', () => console.log('Connected to Mongoose'))
 
 
-
-
+app.listen(process.env.PORT || 3000)
