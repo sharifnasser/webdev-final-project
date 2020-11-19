@@ -4,10 +4,21 @@
 	<div>
 		<div>
 			<label>Nombre</label>
-			<input type="text" name="name">
+			<input type="text" name="nombre" value="<%= opcionesBusqueda.nombre%>">
 		</div>
 	</div>
 	<div>
 		<button type="submit">Buscar</button>
 	</div>
 </form>
+<br>
+<% investigadores.forEach(investigador => { %>
+	<div><%= investigador.nombre %> </div>
+	<div><%= investigador.telefono %> </div>
+	<div><%= investigador.correo %> </div>
+	<% investigador.topicos.forEach(topico => { %>
+		<div><%= topico %> </div>
+	<% }) %>	
+	<br>
+<% }) %>
+
