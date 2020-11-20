@@ -1,0 +1,30 @@
+<h2><%=investigador.nombre%></h2>
+<h3>Descripcion: traer info de base de datos ? </h3>
+<h4>Medios de contacto</h4>
+
+<h5>Correo electrónico</h5>
+<div>
+<%=investigador.correo%>
+</div>
+
+<h5>Telefono</h5>
+<div>
+<%=investigador.telefono%>
+</div>
+
+<h5>Ubicacion</h5>
+<div>
+Traer info de base de datos
+</div>
+
+<h5>Departamentos</h5>
+<div>
+<% investigador.topicos.forEach(topico => { %>
+	<div><%= topico %> </div>
+<% }) %>
+<div>
+
+<h5>Proyectos</h5>
+<div>
+Traer info de la base de datos?
+</div>

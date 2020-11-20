@@ -25,12 +25,15 @@
 
 <br>
 <% investigadores.forEach(investigador => { %>
+<a href="/lista/<%= investigador.id %>">
 	<div><%= investigador.nombre %> </div>
+</a>
 	<div><%= investigador.telefono %> </div>
 	<div><%= investigador.correo %> </div>
 	<% investigador.topicos.forEach(topico => { %>
 		<div><%= topico %> </div>
-	<% }) %>	
+	<% }) %>
+
 	<br>
 <% }) %>
 
