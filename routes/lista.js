@@ -11,14 +11,29 @@ router.get('/', async (req, res) =>{
 		opcionesBusqueda.nombre = new RegExp(req.query.nombre, 'i')
 	}
 	try{
-		const investigadores = await Investigador.find(opcionesBusqueda)
+		var investigadores = await Investigador.find(opcionesBusqueda)
+		const db = await Investigador.find({})
+		var topicosArr = [];
+		db.forEach(elemento => {
+			elemento.topicos.forEach(topico =>{
+				topicosArr.push(topico)
+			})
+		})
+		var unicosTopicos = new Set(topicosArr);
+		console.log(unicosTopicos)
 		console.log(investigadores)
-		console.log(opcionesBusqueda.nombre)
+		let topico = [req.query.topico || []].flat();
+		if(Array.isArray(topico) && topico.length){
+			investigadores = await Investigador.find({"topicos":{ $in: topico}})
+		}
 		res.render('lista/index', {
 			investigadores: investigadores, 
-			opcionesBusqueda: req.query
+			opcionesBusqueda: req.query, 
+			topicos: unicosTopicos
 		})
-	} catch{
+	} catch(e){
+
+		console.log(e)
 		res.redirect('/')
 	}
 	
