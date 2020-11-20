@@ -12,6 +12,18 @@
 	</div>
 </form>
 <br>
+<div>
+	<form action="/lista" method="GET">
+	    <legend>Topicos</legend>
+	    <% topicos.forEach(topico => { %>
+	    <input type="checkbox" name="topico" value="<%= topico %>">
+	    <label for="<%= topico %>"><%= topico %></label>
+	    <% }) %>
+	    <button type="submit">Filtrar</button>
+	</form>
+</div>
+
+<br>
 <% investigadores.forEach(investigador => { %>
 	<div><%= investigador.nombre %> </div>
 	<div><%= investigador.telefono %> </div>
