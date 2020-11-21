@@ -16,6 +16,8 @@ const bodyParser = require('body-parser')
 // indexRouter variable is going to be set to the router variable in index.js
 const indexRouter = require('./routes/index')
 const listRouter = require('./routes/lista')
+const departamentoRouter = require('./routes/departamento')
+const investigadorRouter = require('./routes/investigador')
 const adminRouter = require('./routes/admin.router')
 
 /*
@@ -52,7 +54,8 @@ app.use('/', indexRouter)
 //app.use('/books', bookRouter)
 app.use('/lista', listRouter)
 app.use('/admin', adminRouter)
-
+app.use('/investigador', investigadorRouter)
+app.use('/departamento', departamentoRouter)
 // Databse
 // We are going to import mongoose to be able to integrate the application with mongodb
 const mongoose = require('mongoose')
