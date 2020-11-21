@@ -32,22 +32,11 @@ router.get('/', async (req, res) =>{
 			topicos: unicosTopicos
 		})
 	} catch(e){
-
 		console.log(e)
 		res.redirect('/')
 	}
 	
 })
 
-router.get('/:id', async (req, res) => {
-	try{
-		const investigador = await Investigador.findById(req.params.id)
-		res.render('lista/investigador', {
-			investigador: investigador
-		})
-	} catch{
-		res.redirect('/')
-	}
-})
 
 module.exports = router

@@ -20,7 +20,9 @@ Traer info de base de datos
 <h5>Departamentos</h5>
 <div>
 <% investigador.topicos.forEach(topico => { %>
-	<div><%= topico %> </div>
+<div>
+	<a href="/departamento/<%= topico %>"><%= topico %> </a>
+</div>
 <% }) %>
 <div>
 
