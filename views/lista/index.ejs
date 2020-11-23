@@ -1,4 +1,49 @@
-<h2>Lista Investigadores</h2>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	
+<div class="container">
+	<div class="row">
+	  <div class="col-sm">
+		<h2>Filtra por Departamento</h2>
+		<div>
+			<form action="/lista" method="GET">
+				<legend>Topicos</legend>
+				<% topicos.forEach(topico => { %>
+				<input type="checkbox" name="topico" value="<%= topico %>">
+				<label for="<%= topico %>"><%= topico %></label>
+				<% }) %>
+				<button type="submit">Filtrar</button>
+			</form>
+		</div>
+	  </div>
+	  <div class="col-sm">
+		<div class="card">
+			<% investigadores.forEach(investigador => { %>			
+			<div class="card-header">
+				<a href="/investigador/<%= investigador.id %>">
+					<div><%= investigador.nombre %> </div>
+				</a>
+			</div>
+			<div class="card-body">
+			  <h5 class="card-title">
+				<% investigador.topicos.forEach(topico => { %>
+					<div><%= topico %> </div>
+				<% }) %>
+			  </h5>
+			  <p class="card-text">
+				<div><%= investigador.telefono %> </div>
+				<div><%= investigador.correo %> </div>
+			  </p>
+			</div>
+			<% }) %>
+		</div>
+	  </div>
+	</div>
+</div>
+
+
 <h3>Buscar Investigador</h3>
 <form action="/lista" method="GET">
 	<div>
@@ -11,29 +56,4 @@
 		<button type="submit">Buscar</button>
 	</div>
 </form>
-<br>
-<div>
-	<form action="/lista" method="GET">
-	    <legend>Topicos</legend>
-	    <% topicos.forEach(topico => { %>
-	    <input type="checkbox" name="topico" value="<%= topico %>">
-	    <label for="<%= topico %>"><%= topico %></label>
-	    <% }) %>
-	    <button type="submit">Filtrar</button>
-	</form>
-</div>
-
-<br>
-<% investigadores.forEach(investigador => { %>
-<a href="/investigador/<%= investigador.id %>">
-	<div><%= investigador.nombre %> </div>
-</a>
-	<div><%= investigador.telefono %> </div>
-	<div><%= investigador.correo %> </div>
-	<% investigador.topicos.forEach(topico => { %>
-		<div><%= topico %> </div>
-	<% }) %>
-
-	<br>
-<% }) %>
 
