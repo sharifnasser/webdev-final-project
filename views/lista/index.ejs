@@ -10,9 +10,23 @@
 		overflow: hidden;
 		margin-top: -6px;
 	}
+
+	.header img {
+		float: left;
+		width: 50px;
+		height: 40px;
+		background: #555;
+	}
+
+	.header h1 {
+		position: relative;
+		top: 18px;
+		left: 10px;
+	}
+
 </style>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg" style="background-color: #171796">
     <a class="navbar-brand" href="#">
 		<div class="logo-image">
             <img src="https://raw.githubusercontent.com/ingridhdezbenz/Ingrid_22_09_2020/master/logotecblanco.png" class="img-fluid">
@@ -34,7 +48,10 @@
 <div class="container">
 	<div class="row">
 	  <div class="col-sm">
-		<h2>Filtra por Departamento</h2>
+		<div class="header">
+			<img src="https://raw.githubusercontent.com/ingridhdezbenz/Ingrid_22_09_2020/master/Captura.PNG" alt="logo" />
+			<h1>Filtra por Departamento</h1>
+		</div>
 		<div>
 			<form action="/lista" method="GET">
 				<legend>Topicos</legend>
@@ -42,12 +59,24 @@
 				<input type="checkbox" name="topico" value="<%= topico %>">
 				<label for="<%= topico %>"><%= topico %></label>
 				<% }) %>
-				<button type="submit">Filtrar</button>
+				<button class="btn btn-primary" type="submit">Filtrar</button>
 			</form>
 		</div>
-	  </div>
+		<h3>Buscar Investigador</h3>
+			<form action="/lista" method="GET">
+				<div>
+					<div>
+						<label>Nombre</label>
+						<input type="text" name="nombre" value="<%= opcionesBusqueda.nombre%>">
+					</div>
+				</div>
+				<div>
+					<button class="btn btn-primary" type="submit">Buscar</button>
+				</div>
+			</form>
+	 </div>
 	  <div class="col-sm">
-		<div class="card">
+		<div class="card" style="margin-bottom;: 40px">
 			<% investigadores.forEach(investigador => { %>			
 			<div class="card-header">
 				<a href="/investigador/<%= investigador.id %>">
@@ -55,7 +84,7 @@
 				</a>
 			</div>
 			<div class="card-body">
-			  <h5 class="card-title">
+			  <h5 class="card-title" style="color:#171796">
 				<% investigador.topicos.forEach(topico => { %>
 					<div><%= topico %> </div>
 				<% }) %>
@@ -72,16 +101,5 @@
 </div>
 
 
-<h3>Buscar Investigador</h3>
-<form action="/lista" method="GET">
-	<div>
-		<div>
-			<label>Nombre</label>
-			<input type="text" name="nombre" value="<%= opcionesBusqueda.nombre%>">
-		</div>
-	</div>
-	<div>
-		<button type="submit">Buscar</button>
-	</div>
-</form>
+
 
