@@ -5,13 +5,14 @@ const AdminBroMongoose = require('@admin-bro/mongoose')
 const mongoose = require('mongoose')
 
 const Investigador = require('../models/investigador')
+const Departamento = require('../models/departamento')
 
 AdminBro.registerAdapter(AdminBroMongoose)
 
 const adminBro = new AdminBro({
   databases: [mongoose],
   rootPath: '/admin',
-  resources: [Investigador],
+  resources: [Investigador, Departamento],
 })
 
 // Taking login credentials from environmental variables
