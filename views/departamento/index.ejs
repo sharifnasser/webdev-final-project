@@ -27,8 +27,8 @@
    </div>
 </nav>
 
-<h2 style="margin-top: 40px; color: #171796; margin-left: 40px"><%=departamento%></h2>
-<div style="margin-left: 40px">Descripcion sacada de la base de datos </div>
+<h2 style="margin-top: 40px; color: #171796; margin-left: 40px"><%=departamento.nombre%></h2>
+<div><%=departamento.descripcion%> </div>
 
 <h4 style="margin-top: 40px; margin-left: 40px">Miembros</h4>
 <div style="margin-left: 40px">
@@ -40,4 +40,8 @@
 </div>
 
 <h4 style="margin-top: 40px; margin-left: 40px">Proyectos</h4>
-<div style="margin-left: 40px">Sacado de la base de datos: Iterar en los proyectos que correspondan a este departamento desplegarlos aqui. Cada una de ellas va a ser un link a la pagina de /proyectos/:id en dado caso qeu el proyecto sea en esquema en MongoDB o /proyectos/:proyecto donde :proyecto sea el nombre del proyecto si este es unico</div>
+<div style="margin-left: 40px">
+	<% departamento.proyectos.forEach(proyecto => { %>
+		<div><%= proyecto %> </div>
+	<% }) %>
+</div>
