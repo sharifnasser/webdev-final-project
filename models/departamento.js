@@ -1,6 +1,5 @@
 const mongoose = require('mongoose')
 
-// Create a schema which is like a table
 const departamentoSchema = new mongoose.Schema({
 	// We define here the different columns of our schema which is going to be a JSON object
 	nombre: {
@@ -11,10 +10,10 @@ const departamentoSchema = new mongoose.Schema({
 		type: String, 
 		required: true
 	},
-	proyectos: {
-		type: [String], 
-		required: true
-	}
+	proyectos: [{
+		nombre: String,
+		descripcion: String
+	}]
 })
 
 // Exportamos el esquema

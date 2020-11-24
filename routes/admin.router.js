@@ -7,6 +7,7 @@ const mongoose = require('mongoose')
 const Investigador = require('../models/investigador')
 const Departamento = require('../models/departamento')
 
+
 AdminBro.registerAdapter(AdminBroMongoose)
 
 const adminBro = new AdminBro({
