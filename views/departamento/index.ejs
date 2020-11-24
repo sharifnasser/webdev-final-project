@@ -31,7 +31,7 @@
 <div><%=departamento.descripcion%> </div>
 
 <h4 style="margin-top: 40px; margin-left: 40px">Miembros</h4>
-<div>
+<div style="margin-left: 40px">
 	<% investigadores.forEach(investigador => { %>
 		<a href="/investigador/<%= investigador.id %>">
 			<div><%= investigador.nombre %> </div>
@@ -40,7 +40,7 @@
 </div>
 
 <h4 style="margin-top: 40px; margin-left: 40px">Proyectos</h4>
-<div>
+<div style="margin-left: 40px">
 	<% departamento.proyectos.forEach(proyecto => { %>
 		<div><%= proyecto %> </div>
 	<% }) %>
