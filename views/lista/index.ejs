@@ -2,11 +2,56 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-	
+<style>
+	 .logo-image{
+		width: 46px;
+		height: 46px;
+		border-radius: 50%;
+		overflow: hidden;
+		margin-top: -6px;
+	}
+
+	.header img {
+		float: left;
+		width: 50px;
+		height: 40px;
+		background: #555;
+	}
+
+	.header h1 {
+		position: relative;
+		top: 18px;
+		left: 10px;
+	}
+
+</style>
+
+<nav class="navbar navbar-expand-lg" style="background-color: #171796">
+    <a class="navbar-brand" href="#">
+		<div class="logo-image">
+            <img src="https://raw.githubusercontent.com/ingridhdezbenz/Ingrid_22_09_2020/master/logotecblanco.png" class="img-fluid">
+        </div>
+	</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Investigadores del Tecnológico de Monterrey<span class="sr-only">(current)</span></a>
+        </li>
+      </ul>
+    </div>
+</nav>
+
 <div class="container">
 	<div class="row">
 	  <div class="col-sm">
-		<h2>Filtra por Departamento</h2>
+		<div class="header">
+			<img src="https://raw.githubusercontent.com/ingridhdezbenz/Ingrid_22_09_2020/master/Captura.PNG" alt="logo" />
+			<h1>Filtra por Departamento</h1>
+		</div>
 		<div>
 			<form action="/lista" method="GET">
 				<legend>Topicos</legend>
@@ -14,12 +59,24 @@
 				<input type="checkbox" name="topico" value="<%= topico %>">
 				<label for="<%= topico %>"><%= topico %></label>
 				<% }) %>
-				<button type="submit">Filtrar</button>
+				<button class="btn btn-primary" type="submit">Filtrar</button>
 			</form>
 		</div>
-	  </div>
+		<h3>Buscar Investigador</h3>
+			<form action="/lista" method="GET">
+				<div>
+					<div>
+						<label>Nombre</label>
+						<input type="text" name="nombre" value="<%= opcionesBusqueda.nombre%>">
+					</div>
+				</div>
+				<div>
+					<button class="btn btn-primary" type="submit">Buscar</button>
+				</div>
+			</form>
+	 </div>
 	  <div class="col-sm">
-		<div class="card">
+		<div class="card" style="margin-bottom;: 40px">
 			<% investigadores.forEach(investigador => { %>			
 			<div class="card-header">
 				<a href="/investigador/<%= investigador.id %>">
@@ -27,7 +84,7 @@
 				</a>
 			</div>
 			<div class="card-body">
-			  <h5 class="card-title">
+			  <h5 class="card-title" style="color:#171796">
 				<% investigador.topicos.forEach(topico => { %>
 					<div><%= topico %> </div>
 				<% }) %>
@@ -44,16 +101,5 @@
 </div>
 
 
-<h3>Buscar Investigador</h3>
-<form action="/lista" method="GET">
-	<div>
-		<div>
-			<label>Nombre</label>
-			<input type="text" name="nombre" value="<%= opcionesBusqueda.nombre%>">
-		</div>
-	</div>
-	<div>
-		<button type="submit">Buscar</button>
-	</div>
-</form>
+
 
