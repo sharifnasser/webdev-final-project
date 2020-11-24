@@ -39,7 +39,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="#">Investigadores del Tecnológico de Monterrey<span class="sr-only">(current)</span></a>
+          <a class="nav-link text-white" href="#">Investigadores del Tecnológico de Monterrey<span class="sr-only">(current)</span></a>
         </li>
       </ul>
     </div>
@@ -49,12 +49,14 @@
 	<div class="row">
 	  <div class="col-sm">
 		<div class="header">
-			<img src="https://raw.githubusercontent.com/ingridhdezbenz/Ingrid_22_09_2020/master/Captura.PNG" alt="logo" />
-			<h1>Filtra por Departamento</h1>
+			<h1>
+				<img src="https://raw.githubusercontent.com/ingridhdezbenz/Ingrid_22_09_2020/master/Captura.PNG" alt="logo" />
+				Filtra por Departamento
+			</h1>
 		</div>
 		<div>
 			<form action="/lista" method="GET">
-				<legend>Topicos</legend>
+				<legend style="margin-top: 40px">Topicos</legend>
 				<% topicos.forEach(topico => { %>
 				<input type="checkbox" name="topico" value="<%= topico %>">
 				<label for="<%= topico %>"><%= topico %></label>
@@ -62,7 +64,7 @@
 				<button class="btn btn-primary" type="submit">Filtrar</button>
 			</form>
 		</div>
-		<h3>Buscar Investigador</h3>
+		<h3 style="margin-top: 40px">Buscar Investigador</h3>
 			<form action="/lista" method="GET">
 				<div>
 					<div>
@@ -76,30 +78,26 @@
 			</form>
 	 </div>
 	  <div class="col-sm">
+		<% investigadores.forEach(investigador => { %>
 		<div class="card" style="margin-top: 60px">
-			<% investigadores.forEach(investigador => { %>			
 			<div class="card-header">
 				<a href="/investigador/<%= investigador.id %>">
-					<div><%= investigador.nombre %> </div>
+					<div><%= investigador.nombre %></div>
 				</a>
 			</div>
 			<div class="card-body">
 			  <h5 class="card-title" style="color:#171796">
 				<% investigador.topicos.forEach(topico => { %>
-					<div><%= topico %> </div>
+					<div><%= topico %></div>
 				<% }) %>
 			  </h5>
 			  <p class="card-text">
-				<div><%= investigador.telefono %> </div>
-				<div><%= investigador.correo %> </div>
+				<div><%= investigador.telefono %></div>
+				<div><%= investigador.correo %></div>
 			  </p>
 			</div>
-			<% }) %>
 		</div>
+		<% }) %>
 	  </div>
 	</div>
 </div>
-
-
-
-
