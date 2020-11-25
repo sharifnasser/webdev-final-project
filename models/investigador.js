@@ -26,10 +26,10 @@ const investigadorSchema = new mongoose.Schema({
 		type: [String], 
 		required: true
 	},
-	proyectos: {
-		type: [String], 
-		required: true
-	}
+	proyectos: [{
+		nombre: String, 
+		descripcion: String
+	}]
 })
 
 // Exportamos el esquema
