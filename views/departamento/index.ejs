@@ -23,6 +23,8 @@
 <h4 style="margin-top: 40px; margin-left: 40px">Proyectos</h4>
 <div style="margin-left: 40px">
 	<% departamento.proyectos.forEach(proyecto => { %>
-		<div><%= proyecto %> </div>
+	<a href="/proyecto/<%= proyecto.nombre %>">
+		<div><%= proyecto.nombre %> </div>
+	</a>
 	<% }) %>
 </div>

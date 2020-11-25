@@ -1,0 +1,37 @@
+<style>
+	.logo-image{
+	   width: 46px;
+	   height: 46px;
+	   border-radius: 50%;
+	   overflow: hidden;
+	   margin-top: -6px;
+   }
+</style>
+
+<h2 style="margin-top: 40px; color: #171796; margin-left: 40px"><%=nombreProyecto%></h2>
+<% investigador[0].proyectos.forEach(proyecto => { %>
+	<% if(proyecto.nombre == nombreProyecto){ %>
+		<div><%= proyecto.descripcion %></div>
+	<%}%>
+<%})%>
+
+
+
+<h4 style="margin-top: 40px; margin-left: 40px">Miembros</h4>
+<div style="margin-left: 40px">
+	<% todosInvestigadores.forEach(persona =>{ %>
+		<a href="/investigador/<%= persona.id %>">
+			<div><%= persona.nombre %></div>
+		</a>
+	<% }) %>
+</div>
+
+<h4 style="margin-top: 40px; margin-left: 40px">Topicos</h4>
+<div style="margin-left: 40px">
+	
+	<% topicos.forEach(topico =>{ %>
+		<a href="/departamento/<%= topico %>">
+			<div><%= topico %></div>
+		</a>
+	<% }) %>
+</div>

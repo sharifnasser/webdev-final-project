@@ -7,6 +7,7 @@ const Investigador = require('../models/investigador')
 
 router.get('/:id', async (req, res)=> {
 	const investigador = await Investigador.findById(req.params.id)
+	//console.log(investigador.proyectos)
 	res.render('investigador/index', {
 		investigador: investigador
 	})

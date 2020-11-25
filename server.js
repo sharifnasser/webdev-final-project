@@ -18,6 +18,7 @@ const indexRouter = require('./routes/index')
 const listRouter = require('./routes/lista')
 const departamentoRouter = require('./routes/departamento')
 const investigadorRouter = require('./routes/investigador')
+const proyectoRouter = require('./routes/proyecto')
 const adminRouter = require('./routes/admin.router')
 
 /*
@@ -56,6 +57,7 @@ app.use('/lista', listRouter)
 app.use('/admin', adminRouter)
 app.use('/investigador', investigadorRouter)
 app.use('/departamento', departamentoRouter)
+app.use('/proyecto', proyectoRouter)
 // Databse
 // We are going to import mongoose to be able to integrate the application with mongodb
 const mongoose = require('mongoose')

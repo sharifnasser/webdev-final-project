@@ -60,7 +60,7 @@
 <div style="margin-left: 40px">
 <% investigador.proyectos.forEach(proyecto => { %>
 <div>
-	<%= proyecto %>
+	<a href="/proyecto/<%= proyecto.nombre %>"> <%= proyecto.nombre %>
 </div>
 <% }) %>
 <div>
