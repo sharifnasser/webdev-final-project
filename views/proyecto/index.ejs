@@ -11,7 +11,7 @@
 <h2 style="margin-top: 40px; color: #171796; margin-left: 40px"><%=nombreProyecto%></h2>
 <% investigador[0].proyectos.forEach(proyecto => { %>
 	<% if(proyecto.nombre == nombreProyecto){ %>
-		<div><%= proyecto.descripcion %></div>
+		<div style="margin-left: 40px"><%= proyecto.descripcion %></div>
 	<%}%>
 <%})%>
 
